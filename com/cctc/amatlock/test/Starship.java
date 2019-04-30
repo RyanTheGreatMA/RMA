@@ -4,6 +4,8 @@ import java.awt.*;
 
 public class Starship extends CoreObject
 {
+    private Laser[] lasers = new Laser[100];
+    private int laserCounter = 0;
     int score = 0;
     /**
      * Creates the core object. All subclasses
@@ -24,21 +26,40 @@ public class Starship extends CoreObject
     {
         Laser laser = new Laser(x, y, 4, 8, Color.red);
         laser.setVelY(-6);
-        Screen.addObject(laser);
+        lasers[laserCounter] = laser;
+        laserCounter ++;
     }
 
     @Override
     public void tick() {
+        Point mouse = Screen.getInstance().mouse;
+        if(mouse.x < this.x)
+        {
+            setVelX(-1);
+
+        }
+        else if(mouse.x > this.x)
+        {
+            setVelX(1);
+        }
 
         x += velX;
         y += velY;
 
-
+        for(int i =0; i < laserCounter; i++)
+        {
+            lasers[i].tick();
+        }
     }
 
     @Override
     public void render(Graphics g) {
         g.setColor(color);
         g.fillRect(  x,  y,  width, height );
+
+        for(int i =0; i < laserCounter; i++)
+        {
+            lasers[i].render(g);
+        }
     }
 }

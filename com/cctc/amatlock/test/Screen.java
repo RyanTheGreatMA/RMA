@@ -21,9 +21,9 @@ public class Screen extends Canvas implements Runnable
     public Starship ship;
     public Goei goei;
     public Zako zako;
+    public Point mouse = new Point(Reference.CENTER_X, Reference.CENTER_Y);
 
-    public static Screen
-getInstance()
+    public static Screen getInstance()
     {
         return screen;
     }
@@ -125,13 +125,18 @@ getInstance()
         KeyInput keyInput = new KeyInput();
         this.addKeyListener(keyInput);
 
+        MouseInput mouseInput = new MouseInput();
+        this.addMouseMotionListener(mouseInput);
+        this.addMouseListener(mouseInput);
+
         int X = 7;
         int Y = 100;
+        int goeiWidth = 30;
 
-        for(int i = 0; i < 31; i++)
+        for(int i = 0; i < 10; i++)
         {
-            Goei alien = new Goei(X,Y, 30, 20, Color.red);
-            X += 32;
+            Goei alien = new Goei(X,Y, goeiWidth, 20, Color.red);
+            X += goeiWidth * 2;
             addObject(alien);
         }
     }
