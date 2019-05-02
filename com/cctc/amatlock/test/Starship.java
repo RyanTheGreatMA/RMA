@@ -7,6 +7,7 @@ public class Starship extends CoreObject
     private Laser[] lasers = new Laser[100];
     private int laserCounter = 0;
     int score = 0;
+
     /**
      * Creates the core object. All subclasses
      * will call this with super.
@@ -24,10 +25,16 @@ public class Starship extends CoreObject
 
     public void shoot()
     {
-        Laser laser = new Laser(x, y, 4, 8, Color.red);
+        Laser laser = new Laser(x, y, 4, 8, Color.red,true);
         laser.setVelY(-6);
+
         lasers[laserCounter] = laser;
-        laserCounter ++;
+        laserCounter++;
+
+        if(laserCounter >= lasers.length)
+        {
+            laserCounter = 0;
+        }
     }
 
     @Override
@@ -35,18 +42,18 @@ public class Starship extends CoreObject
         Point mouse = Screen.getInstance().mouse;
         if(mouse.x < this.x)
         {
-            setVelX(-1);
+            setVelX(-5);
 
         }
         else if(mouse.x > this.x)
         {
-            setVelX(1);
+            setVelX(5);
         }
 
         x += velX;
         y += velY;
 
-        for(int i =0; i < laserCounter; i++)
+        for(int i = 0; i < laserCounter; i++)
         {
             lasers[i].tick();
         }
@@ -55,7 +62,7 @@ public class Starship extends CoreObject
     @Override
     public void render(Graphics g) {
         g.setColor(color);
-        g.fillRect(  x,  y,  width, height );
+        g.fillRect( x, y, width, height );
 
         for(int i =0; i < laserCounter; i++)
         {

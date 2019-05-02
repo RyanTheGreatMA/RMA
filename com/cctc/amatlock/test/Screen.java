@@ -19,8 +19,6 @@ public class Screen extends Canvas implements Runnable
     private boolean running = false;  // Boolean flipped when the program starts or stops.
     private Thread thread;  // Don't worry about what this is.
     public Starship ship;
-    public Goei goei;
-    public Zako zako;
     public Point mouse = new Point(Reference.CENTER_X, Reference.CENTER_Y);
 
     public static Screen getInstance()
@@ -67,8 +65,6 @@ public class Screen extends Canvas implements Runnable
     public void drawForeground(Graphics g)
     {
         ship.render(g);
-        goei.render(g);
-        zako.render(g);
         for (int i =0; i < objectCounter; i++)
         {
             coreObjects[i].render(g);
@@ -99,13 +95,12 @@ public class Screen extends Canvas implements Runnable
     public void tick()
     {
         ship.tick();
-        goei.tick();
-        zako.tick();
 
         for (int i =0; i < objectCounter; i++)
         {
             coreObjects[i].tick();
         }
+
 
 
     }
@@ -119,8 +114,6 @@ public class Screen extends Canvas implements Runnable
 //        ResourceLoader.loadImages();    // loads images from files.
 
         ship = new Starship(Reference.CENTER_X, Reference.HEIGHT -30,30, 30, Color.BLUE);
-        goei = new Goei(Reference.CENTER_X +50,  0,20, 20, Color.red);
-        zako = new Zako(Reference.CENTER_X-50, 0,20, 20, Color.green);
 
         KeyInput keyInput = new KeyInput();
         this.addKeyListener(keyInput);
@@ -135,9 +128,10 @@ public class Screen extends Canvas implements Runnable
 
         for(int i = 0; i < 10; i++)
         {
-            Goei alien = new Goei(X,Y, goeiWidth, 20, Color.red);
+            Goei goei = new Goei(X,Y, goeiWidth, 20, Color.red);
             X += goeiWidth * 2;
-            addObject(alien);
+            addObject(goei);
+            goei.setVelX(5);
         }
     }
 

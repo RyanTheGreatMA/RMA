@@ -3,6 +3,8 @@ package com.cctc.amatlock.test;
 import java.awt.*;
 
 public class Laser extends CoreObject{
+    public boolean ally;
+
 
     /**
      * Creates the core object. All subclasses
@@ -15,8 +17,9 @@ public class Laser extends CoreObject{
      * @param height
      * @param color
      */
-    public Laser(int x, int y, int width, int height, Color color) {
+    public Laser(int x, int y, int width, int height, Color color, boolean ally) {
         super(x, y, width, height, color);
+        this.ally = ally;
     }
 
     @Override
