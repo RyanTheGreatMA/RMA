@@ -26,17 +26,28 @@ public class Laser extends CoreObject{
     public void tick() {
         Starship ship = Screen.getInstance().ship;
 
-        for (int i =0; i < Screen.getObjectCounter(); i++)
+        if(ally)
         {
-            CoreObject obj = Screen.getCoreObjects()[i];
-            if (intersects(obj) && !obj.destroyed)
+            for (int i =0; i < Screen.getObjectCounter(); i++)
+            {
+                CoreObject obj = Screen.getCoreObjects()[i];
+                if (intersects(obj) && !obj.destroyed)
+                {
+
+                    obj.destroy();
+                    ship.score++;
+                }
+            }
+        }
+        else
+        {
+            if (intersects(ship) && !ship.destroyed)
             {
 
-                obj.destroy();
-                ship.score++;
+                ship.destroy();
             }
-
         }
+
 
         x += velX;
         y += velY;

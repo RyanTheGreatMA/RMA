@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Starship extends CoreObject
 {
-    private Laser[] lasers = new Laser[100];
+    private Laser[] lasers = new Laser[1000];
     private int laserCounter = 0;
     int score = 0;
 
@@ -39,6 +39,10 @@ public class Starship extends CoreObject
 
     @Override
     public void tick() {
+        if(destroyed)
+        {
+            return;
+        }
         Point mouse = Screen.getInstance().mouse;
         if(mouse.x < this.x)
         {
@@ -61,12 +65,13 @@ public class Starship extends CoreObject
 
     @Override
     public void render(Graphics g) {
-        g.setColor(color);
-        g.fillRect( x, y, width, height );
+        if (!destroyed) {
+            g.setColor(color);
+            g.fillRect(x, y, width, height);
 
-        for(int i =0; i < laserCounter; i++)
-        {
-            lasers[i].render(g);
+            for (int i = 0; i < laserCounter; i++) {
+                lasers[i].render(g);
+            }
         }
     }
 }

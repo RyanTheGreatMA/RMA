@@ -3,10 +3,10 @@ package com.cctc.amatlock.test;
 import java.awt.*;
 
 public class Goei extends CoreObject{
-    private int ticks = 0;
+    private int ticks = Randomizer.nextInt(0,60);
     private Laser[] lasers = new Laser[100];
     private int laserCounter = 0;
-    int score = 0;
+
     /**
      * Creates the core object. All subclasses
      * will call this with super.
@@ -42,6 +42,12 @@ public class Goei extends CoreObject{
         {
             return;
         }
+        ticks++;
+        if(ticks > 60)
+        {
+            shoot();
+            ticks = 0;
+        }
 
         if( x > Reference.WIDTH - width*2)
         {
@@ -53,7 +59,7 @@ public class Goei extends CoreObject{
             setVelX(5);
             y += 40;
         }
-        shoot();
+
 
         x += velX;
         y += velY;
