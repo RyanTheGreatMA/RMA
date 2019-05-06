@@ -109,18 +109,12 @@ public class Screen extends Canvas implements Runnable
     /**
      * Does the things needed when our program starts.
      */
-    public void init()
+    public void reset()
     {
-//        ResourceLoader.loadImages();    // loads images from files.
+        ResourceLoader.loadImages();    // loads images from files.
 
         ship = new Starship(Reference.CENTER_X, Reference.HEIGHT -30,30, 30, Color.BLUE);
 
-        KeyInput keyInput = new KeyInput();
-        this.addKeyListener(keyInput);
-
-        MouseInput mouseInput = new MouseInput();
-        this.addMouseMotionListener(mouseInput);
-        this.addMouseListener(mouseInput);
 
         int X = 7;
         int Y = 100;
@@ -133,6 +127,19 @@ public class Screen extends Canvas implements Runnable
             addObject(goei);
             goei.setVelX(5);
         }
+    }
+    public void init()
+    {
+//
+        coreObjects = new CoreObject[100];
+        KeyInput keyInput = new KeyInput();
+        this.addKeyListener(keyInput);
+
+        MouseInput mouseInput = new MouseInput();
+        this.addMouseMotionListener(mouseInput);
+        this.addMouseListener(mouseInput);
+        reset();
+
     }
 
     @Override

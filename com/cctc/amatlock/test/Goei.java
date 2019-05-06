@@ -38,6 +38,12 @@ public class Goei extends CoreObject{
 
     @Override
     public void tick() {
+
+        for(int i = 0; i < laserCounter; i++)
+        {
+            lasers[i].tick();
+        }
+
         if(destroyed)
         {
             return;
@@ -64,21 +70,17 @@ public class Goei extends CoreObject{
         x += velX;
         y += velY;
 
-        for(int i = 0; i < laserCounter; i++)
-        {
-            lasers[i].tick();
-        }
     }
 
     @Override
     public void render(Graphics g) {
+        for (int i = 0; i < laserCounter; i++) {
+            lasers[i].render(g);
+        }
         if (!destroyed) {
             g.setColor(color);
             g.fillRect(x, y, width, height);
 
-            for (int i = 0; i < laserCounter; i++) {
-                lasers[i].render(g);
-            }
         }
     }
 }
