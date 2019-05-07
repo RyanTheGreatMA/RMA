@@ -27,6 +27,10 @@ public class KeyInput implements KeyListener
         {
             ship.shoot();
         }
+        else if(e.getKeyCode() == KeyEvent.VK_R)
+        {
+            Screen.getInstance().reset();
+        }
     }
 
     @Override

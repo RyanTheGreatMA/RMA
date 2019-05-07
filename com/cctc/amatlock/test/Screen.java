@@ -12,7 +12,7 @@ public class Screen extends Canvas implements Runnable
 
     private static JFrame frame = new JFrame();  // This is the window object
     private static Screen screen = new Screen();  // Our program
-    private static CoreObject[] coreObjects = new CoreObject[10000];
+    private static CoreObject[] coreObjects = new CoreObject[1000];
     private static int objectCounter = 0;
 
     // Instance variables
@@ -101,8 +101,6 @@ public class Screen extends Canvas implements Runnable
             coreObjects[i].tick();
         }
 
-
-
     }
 
 
@@ -111,10 +109,11 @@ public class Screen extends Canvas implements Runnable
      */
     public void reset()
     {
-        ResourceLoader.loadImages();    // loads images from files.
+        coreObjects = new CoreObject[100];
+        objectCounter = 0;
+//        ResourceLoader.loadImages();    // loads images from files.
 
         ship = new Starship(Reference.CENTER_X, Reference.HEIGHT -30,30, 30, Color.BLUE);
-
 
         int X = 7;
         int Y = 100;
