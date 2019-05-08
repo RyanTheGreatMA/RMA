@@ -1,9 +1,11 @@
 package com.cctc.amatlock.test;
 
+import com.cctc.amatlock.test.utilities.Images;
+
 import java.awt.*;
 
 public class Goei extends CoreObject{
-    private int ticks = Randomizer.nextInt(0,60);
+    private int ticks = Randomizer.nextInt(0,120);
     private Laser[] lasers = new Laser[100];
     private int laserCounter = 0;
 
@@ -49,7 +51,7 @@ public class Goei extends CoreObject{
             return;
         }
         ticks++;
-        if(ticks > 60)
+        if(ticks > 120)
         {
             shoot();
             ticks = 0;
@@ -79,7 +81,9 @@ public class Goei extends CoreObject{
         }
         if (!destroyed) {
             g.setColor(color);
-            g.fillRect(x, y, width, height);
+//            g.fillRect(x, y, width, height);
+            g.drawImage(Images.goei, x, y, width, height, null);
+
 
         }
     }

@@ -111,14 +111,33 @@ public class Screen extends Canvas implements Runnable
     {
         coreObjects = new CoreObject[100];
         objectCounter = 0;
-//        ResourceLoader.loadImages();    // loads images from files.
 
-        ship = new Starship(Reference.CENTER_X, Reference.HEIGHT -30,30, 30, Color.BLUE);
+        ship = new Starship(Reference.CENTER_X, Reference.HEIGHT -64,36, 42, Color.BLUE);
 
         int X = 7;
-        int Y = 100;
+        int Y = 30;
         int goeiWidth = 30;
 
+        for(int i = 0; i < 10; i++)
+        {
+            Goei goei = new Goei(X,Y, goeiWidth, 20, Color.red);
+            X += goeiWidth * 2;
+            addObject(goei);
+            goei.setVelX(5);
+        }
+
+        X = 7;
+        Y += goeiWidth * 2;
+        for(int i = 0; i < 10; i++)
+        {
+            Goei goei = new Goei(X,Y, goeiWidth, 20, Color.red);
+            X += goeiWidth * 2;
+            addObject(goei);
+            goei.setVelX(5);
+        }
+
+        X = 7;
+        Y += goeiWidth * 2;
         for(int i = 0; i < 10; i++)
         {
             Goei goei = new Goei(X,Y, goeiWidth, 20, Color.red);
@@ -129,7 +148,8 @@ public class Screen extends Canvas implements Runnable
     }
     public void init()
     {
-//
+        ResourceLoader.loadImages();    // loads images from files.
+
         coreObjects = new CoreObject[100];
         KeyInput keyInput = new KeyInput();
         this.addKeyListener(keyInput);

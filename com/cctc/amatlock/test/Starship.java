@@ -1,5 +1,7 @@
 package com.cctc.amatlock.test;
 
+import com.cctc.amatlock.test.utilities.Images;
+
 import java.awt.*;
 
 public class Starship extends CoreObject
@@ -25,7 +27,7 @@ public class Starship extends CoreObject
 
     public void shoot()
     {
-        Laser laser = new Laser(x, y, 4, 8, Color.red,true);
+        Laser laser = new Laser(x+16, y, 4, 8, Color.red,true);
         laser.setVelY(-6);
 
         lasers[laserCounter] = laser;
@@ -72,7 +74,8 @@ public class Starship extends CoreObject
     public void render(Graphics g) {
         if (!destroyed) {
             g.setColor(color);
-            g.fillRect(x, y, width, height);
+//            g.fillRect(x, y, width, height);
+            g.drawImage(Images.ship, x, y, width, height, null);
 
             for (int i = 0; i < laserCounter; i++) {
                 lasers[i].render(g);
