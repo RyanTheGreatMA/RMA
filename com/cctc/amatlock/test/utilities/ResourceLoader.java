@@ -19,6 +19,8 @@ public class ResourceLoader
         // The try/catch is code to catch if
         // any image isn't found.
         try{
+            Images.ship = imageLoader.loadImage("ship.png");
+            Images.goei = imageLoader.loadImage("goei.png");
             Images.background = imageLoader.loadImage("background.png");
         } catch (IOException e)
         {
