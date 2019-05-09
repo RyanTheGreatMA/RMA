@@ -149,7 +149,7 @@ public class Screen extends Canvas implements Runnable
     public void init()
     {
         ResourceLoader.loadImages();    // loads images from files.
-
+//        ResourceLoader.loadSounds();
         coreObjects = new CoreObject[100];
         KeyInput keyInput = new KeyInput();
         this.addKeyListener(keyInput);

@@ -1,6 +1,7 @@
 package com.cctc.amatlock.test;
 
 import com.cctc.amatlock.test.utilities.Images;
+import com.cctc.amatlock.test.utilities.Sounds;
 
 import java.awt.*;
 
@@ -29,6 +30,7 @@ public class Starship extends CoreObject
     {
         Laser laser = new Laser(x+16, y, 4, 8, Color.red,true);
         laser.setVelY(-6);
+//        Sounds.alien.start();
 
         lasers[laserCounter] = laser;
         laserCounter++;

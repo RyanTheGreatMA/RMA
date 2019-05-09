@@ -5,7 +5,7 @@ import com.cctc.amatlock.test.utilities.Images;
 import java.awt.*;
 
 public class Goei extends CoreObject{
-    private int ticks = Randomizer.nextInt(0,120);
+    private int ticks = Randomizer.nextInt(-60,60);
     private Laser[] lasers = new Laser[100];
     private int laserCounter = 0;
 

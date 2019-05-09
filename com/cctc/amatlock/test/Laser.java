@@ -24,8 +24,12 @@ public class Laser extends CoreObject{
 
     @Override
     public void tick() {
-        Starship ship = Screen.getInstance().ship;
 
+        Starship ship = Screen.getInstance().ship;
+        if (destroyed )
+        {
+            return;
+        }
         if(ally)
         {
             for (int i =0; i < Screen.getObjectCounter(); i++)
@@ -34,8 +38,10 @@ public class Laser extends CoreObject{
                 if (intersects(obj) && !obj.destroyed)
                 {
 
+
                     obj.destroy();
                     ship.score++;
+                    destroy();
                 }
             }
         }
@@ -56,6 +62,10 @@ public class Laser extends CoreObject{
 
     @Override
     public void render(Graphics g) {
+        if (destroyed )
+        {
+            return;
+        }
         g.setColor(color);
         g.fillRect(  x,  y,  width, height );
 
