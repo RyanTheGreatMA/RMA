@@ -17,11 +17,11 @@ public class KeyInput implements KeyListener
 
         if(e.getKeyCode() == KeyEvent.VK_A)
         {
-            ship.setVelX(-1);
+            ship.setVelX(-5);
         }
         else if (e.getKeyCode() == KeyEvent.VK_D)
         {
-            ship.setVelX(1);
+            ship.setVelX(5);
         }
         else if (e.getKeyCode() == KeyEvent.VK_SPACE)
         {
@@ -38,14 +38,14 @@ public class KeyInput implements KeyListener
     {
         Starship ship = Screen.getInstance().ship;
 
-        if(e.getKeyCode() == KeyEvent.VK_A)
-        {
-            ship.setVelX(0);
-        }
-        else if (e.getKeyCode() == KeyEvent.VK_D)
-        {
-            ship.setVelX(0);
-        }
+//        if(e.getKeyCode() == KeyEvent.VK_A)
+//        {
+//            ship.setVelX(0);
+//        }
+//        else if (e.getKeyCode() == KeyEvent.VK_D)
+//        {
+//            ship.setVelX(0);
+//        }
     }
 
 }

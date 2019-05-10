@@ -47,21 +47,21 @@ public class Starship extends CoreObject
         {
             return;
         }
-        Point mouse = Screen.getInstance().mouse;
-
-        if(mouse.x < this.x)
-        {
-            setVelX(-5);
-
-        }
-        else if(mouse.x > this.x + this.width)
-        {
-            setVelX(5);
-        }
-        else
-        {
-            setVelX(0);
-        }
+//        Point mouse = Screen.getInstance().mouse;
+//
+//        if(mouse.x < this.x)
+//        {
+//            setVelX(-5);
+//
+//        }
+//        else if(mouse.x > this.x + this.width)
+//        {
+//            setVelX(5);
+//        }
+//        else
+//        {
+//            setVelX(0);
+//        }
 
         x += velX;
         y += velY;

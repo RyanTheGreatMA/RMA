@@ -48,7 +48,7 @@ public class Screen extends Canvas implements Runnable
 
         // Making a dark gray background.
         // First set the draw color to dark grey.
-        g.setColor(Color.WHITE);
+        g.setColor(Color.BLACK);
 
         // Next make a rectangle starting in the top right corner (first 2 parameters)
         // Make it the width and height of the window (last 2 parameters)
@@ -112,15 +112,15 @@ public class Screen extends Canvas implements Runnable
         coreObjects = new CoreObject[100];
         objectCounter = 0;
 
-        ship = new Starship(Reference.CENTER_X, Reference.HEIGHT -64,36, 42, Color.BLUE);
+        ship = new Starship(Reference.CENTER_X, Reference.HEIGHT -64,32, 37, Color.BLUE);
 
         int X = 7;
         int Y = 30;
-        int goeiWidth = 30;
+        int goeiWidth = 32;
 
         for(int i = 0; i < 10; i++)
         {
-            Goei goei = new Goei(X,Y, goeiWidth, 20, Color.red);
+            Goei goei = new Goei(X,Y, goeiWidth, 32, Color.red);
             X += goeiWidth * 2;
             addObject(goei);
             goei.setVelX(5);
@@ -130,7 +130,7 @@ public class Screen extends Canvas implements Runnable
         Y += goeiWidth * 2;
         for(int i = 0; i < 10; i++)
         {
-            Goei goei = new Goei(X,Y, goeiWidth, 20, Color.red);
+            Goei goei = new Goei(X,Y, goeiWidth, 32, Color.red);
             X += goeiWidth * 2;
             addObject(goei);
             goei.setVelX(5);
@@ -140,7 +140,7 @@ public class Screen extends Canvas implements Runnable
         Y += goeiWidth * 2;
         for(int i = 0; i < 10; i++)
         {
-            Goei goei = new Goei(X,Y, goeiWidth, 20, Color.red);
+            Goei goei = new Goei(X,Y, goeiWidth, 32, Color.red);
             X += goeiWidth * 2;
             addObject(goei);
             goei.setVelX(5);
@@ -154,9 +154,9 @@ public class Screen extends Canvas implements Runnable
         KeyInput keyInput = new KeyInput();
         this.addKeyListener(keyInput);
 
-        MouseInput mouseInput = new MouseInput();
-        this.addMouseMotionListener(mouseInput);
-        this.addMouseListener(mouseInput);
+//        MouseInput mouseInput = new MouseInput();
+//        this.addMouseMotionListener(mouseInput);
+//        this.addMouseListener(mouseInput);
         reset();
 
     }
