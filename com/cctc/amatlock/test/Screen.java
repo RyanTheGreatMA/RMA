@@ -14,6 +14,7 @@ public class Screen extends Canvas implements Runnable
     private static Screen screen = new Screen();  // Our program
     private static CoreObject[] coreObjects = new CoreObject[1000];
     private static int objectCounter = 0;
+    public static int difficulty = 1;
 
     // Instance variables
     private boolean running = false;  // Boolean flipped when the program starts or stops.
@@ -60,6 +61,7 @@ public class Screen extends Canvas implements Runnable
         g.setColor(Color.white);
         String score = "player: " + ship.score;
         g.drawString(score,20,20);
+        g.drawString( "difficulty: " + difficulty,20,40);
     }
 
     public void drawForeground(Graphics g)
@@ -107,44 +109,28 @@ public class Screen extends Canvas implements Runnable
     /**
      * Does the things needed when our program starts.
      */
-    public void reset()
-    {
+    public void reset() {
         coreObjects = new CoreObject[100];
         objectCounter = 0;
 
-        ship = new Starship(Reference.CENTER_X, Reference.HEIGHT -64,32, 37, Color.BLUE);
+        ship = new Starship(Reference.CENTER_X, Reference.HEIGHT - 64, 32, 37, Color.BLUE);
 
         int X = 7;
         int Y = 30;
         int goeiWidth = 32;
 
-        for(int i = 0; i < 10; i++)
+        for (int i = 0; i < difficulty; i++)
         {
-            Goei goei = new Goei(X,Y, goeiWidth, 32, Color.red);
-            X += goeiWidth * 2;
-            addObject(goei);
-            goei.setVelX(5);
+            for (int j = 0; j < 9; j++) {
+                Goei goei = new Goei(X, Y, goeiWidth, 24, Color.red);
+                X += goeiWidth * 2;
+                addObject(goei);
+                goei.setVelX(5);
+            }
+            X = 7;
+            Y += goeiWidth * 1.5;
         }
 
-        X = 7;
-        Y += goeiWidth * 2;
-        for(int i = 0; i < 10; i++)
-        {
-            Goei goei = new Goei(X,Y, goeiWidth, 32, Color.red);
-            X += goeiWidth * 2;
-            addObject(goei);
-            goei.setVelX(5);
-        }
-
-        X = 7;
-        Y += goeiWidth * 2;
-        for(int i = 0; i < 10; i++)
-        {
-            Goei goei = new Goei(X,Y, goeiWidth, 32, Color.red);
-            X += goeiWidth * 2;
-            addObject(goei);
-            goei.setVelX(5);
-        }
     }
     public void init()
     {

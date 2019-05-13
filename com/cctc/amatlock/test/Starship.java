@@ -47,6 +47,7 @@ public class Starship extends CoreObject
         {
             return;
         }
+//        shoot++;
 //        Point mouse = Screen.getInstance().mouse;
 //
 //        if(mouse.x < this.x)

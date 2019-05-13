@@ -31,6 +31,15 @@ public class KeyInput implements KeyListener
         {
             Screen.getInstance().reset();
         }
+        else if(e.getKeyCode() == KeyEvent.VK_UP)
+        {
+            Screen.difficulty++;
+        }
+
+        else if(e.getKeyCode() == KeyEvent.VK_DOWN)
+        {
+            Screen.difficulty--;
+        }
     }
 
     @Override
@@ -38,14 +47,14 @@ public class KeyInput implements KeyListener
     {
         Starship ship = Screen.getInstance().ship;
 
-//        if(e.getKeyCode() == KeyEvent.VK_A)
-//        {
-//            ship.setVelX(0);
-//        }
-//        else if (e.getKeyCode() == KeyEvent.VK_D)
-//        {
-//            ship.setVelX(0);
-//        }
+        if(e.getKeyCode() == KeyEvent.VK_A)
+        {
+            ship.setVelX(0);
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_D)
+        {
+            ship.setVelX(0);
+        }
     }
 
 }
